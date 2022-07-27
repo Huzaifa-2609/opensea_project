@@ -22,11 +22,10 @@ const Collections = () => {
 
   const nftModule=useMemo(() => {
     if (!provider) return; 
-    const sdk=new ThirdwebSDK(provider.getSigner()  ,"https://eth-rinkeby.alchemyapi.io/v2/jCGgEA0jg7gJTVX0vknMr8egiXZ2S4bL")
+    const sdk=new ThirdwebSDK(provider.getSigner(),"https://eth-rinkeby.alchemyapi.io/v2/jCGgEA0jg7gJTVX0vknMr8egiXZ2S4bL")
     return sdk.getNFTModule(collectionid);
   }
   , [provider])
-  console.log(collectionid)
   // ,"https://eth-rinkeby.alchemyapi.io/v2/jCGgEA0jg7gJTVX0vknMr8egiXZ2S4bL"
   useEffect(() => {
     if (!nftModule)return;
@@ -38,7 +37,7 @@ const Collections = () => {
   }, [nftModule]);
   const marketPlaceModule= useMemo(() => {
     if(!provider) return
-    const sdk = new ThirdwebSDK(provider.getSigner())
+    const sdk = new ThirdwebSDK(provider.getSigner(), "https://eth-rinkeby.alchemyapi.io/v2/jCGgEA0jg7gJTVX0vknMr8egiXZ2S4bL")
     return sdk.getMarketplaceModule(
       "0x12F81777a8f876899D10934E5020081458085116"
     )

@@ -12,6 +12,8 @@ const Purchase = ({isListed, marketPlaceModule, listings, selectedNft}) => {
         if(!listings|| isListed==="false") return 
         ;(async()=>{
             let a= await listings.find((marketNft)=>marketNft?.asset.id===selectedNft.id)
+            // console.log(a.id, "asset id")
+            // console.log(selectedNft.id, "nft id")
             console.log(a, "selected")
             setSelectedMarketNft(a);
             

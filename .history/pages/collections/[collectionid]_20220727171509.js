@@ -22,7 +22,7 @@ const Collections = () => {
 
   const nftModule=useMemo(() => {
     if (!provider) return; 
-    const sdk=new ThirdwebSDK(provider.getSigner()  ,"https://eth-rinkeby.alchemyapi.io/v2/jCGgEA0jg7gJTVX0vknMr8egiXZ2S4bL")
+    const sdk=new ThirdwebSDK(provider.getSigner())
     return sdk.getNFTModule(collectionid);
   }
   , [provider])

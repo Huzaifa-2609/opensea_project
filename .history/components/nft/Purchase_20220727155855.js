@@ -8,10 +8,11 @@ const Purchase = ({isListed, marketPlaceModule, listings, selectedNft}) => {
     const [selectedMarketNft, setSelectedMarketNft] = useState();
     const [enableButton, setEnableButton] = useState(false);
     useEffect(() => {
-        if(!selectedNft) return;
         if(!listings|| isListed==="false") return 
         ;(async()=>{
             let a= await listings.find((marketNft)=>marketNft?.asset.id===selectedNft.id)
+            // console.log(a.id, "asset id")
+            // console.log(selectedNft.id, "nft id")
             console.log(a, "selected")
             setSelectedMarketNft(a);
             
@@ -30,9 +31,10 @@ const Purchase = ({isListed, marketPlaceModule, listings, selectedNft}) => {
     }
     const buyItem= async(
         listingid,
-        quantityDesired=1
+        quantityDesired=1,
+        module=marketPlaceModule
     )=>{
-        await marketPlaceModule.buyoutDirectListing({listingid:parseInt(listingid), quantityDesired:parseInt(quantityDesired)})
+        await module.buyoutDirectListing({listingid:parseInt(listingid), quantityDesired: parseInt(quantityDesired)})
         
         confirmPurchase()
     }

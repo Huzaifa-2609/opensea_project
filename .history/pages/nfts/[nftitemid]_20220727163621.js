@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router'
 import React , {useState, useEffect, useMemo}from 'react'
 import { client } from '../../lib/sanityClient';
+import Router from 'next/router';
 import NFTImage from '../../components/nft/NFTImage';
 import Navbar from '../../components/Navbar';
 import GeneralDetails from '../../components/nft/GeneralDetails';
@@ -17,12 +18,12 @@ const Nft = () => {
  const router= useRouter();
  const nftModule=useMemo(() => {
   if (!provider) return; 
-  const sdk=new ThirdwebSDK(provider.getSigner())
+  const sdk=new ThirdwebSDK(provider.getSigner(),"https://eth-rinkeby.alchemyapi.io/v2/jCGgEA0jg7gJTVX0vknMr8egiXZ2S4bL")
   return sdk.getNFTModule("0x7132e1d414161A232c2027aE6C66D7914649bA66");
 }
 
 , [provider])
-// ,"https://eth-rinkeby.alchemyapi.io/v2/jCGgEA0jg7gJTVX0vknMr8egiXZ2S4bL"
+
 useEffect(() => {
   if (!nftModule)return;
   ;(async()=>{
